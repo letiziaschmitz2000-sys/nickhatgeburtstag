@@ -1,153 +1,208 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nick's World - Level 20</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
+<title>Nick's World | Level 20</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-    <div class="particles"></div>
+<div id="achievement-popup" class="achievement-popup">
+    🏆 Achievement freigeschaltet:
+    <br>
+    LEVEL 20 ERREICHT!
+</div>
 
-    <header class="hero">
+<div id="score">
+    🍬 Lachgummis: 0
+</div>
+
+<header class="hero">
+
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+
         <h1>NICK'S WORLD</h1>
+
         <h2>LEVEL 20 UNLOCKED</h2>
 
-        <p class="subtitle">
-            🎉 Glückwunsch zum Erreichen von Level 20 🎉
+        <p>
+            Willkommen auf dem Server von Nick.
+            Ein neues Level wurde erreicht.
         </p>
 
-        <button onclick="scrollToSection()">
+        <div id="secret">⛏️</div>
+
+        <button onclick="scrollToGame()">
             ▶ Welt betreten
         </button>
-    </header>
 
-    <main id="content">
+    </div>
 
-        <section class="card">
-            <h2>👤 Spielerprofil</h2>
+</header>
 
-            <div class="profile">
-                <p><strong>Name:</strong> Nick</p>
-                <p><strong>Klasse:</strong> Torwart</p>
-                <p><strong>Level:</strong> 20</p>
-                <p><strong>Lieblingsgetränk:</strong> Spezi 🥤</p>
-                <p><strong>Lieblingssüßigkeit:</strong> Lachgummis 🍬</p>
-            </div>
+<main id="game">
 
-            <div class="xp-bar">
-                <div class="xp-fill"></div>
-            </div>
+<section class="card">
 
-            <p class="center">LEVEL 20 ERREICHT!</p>
-        </section>
+<h2>👤 Spielerprofil</h2>
 
-        <section class="card">
+<div class="profile">
 
-            <h2>🏆 Freigeschaltete Achievements</h2>
+<p>Name: Nick</p>
+<p>Klasse: Legendärer Torwart</p>
+<p>Level: 20</p>
+<p>Lieblingssüßigkeit: Lachgummis 🍬</p>
+<p>Lieblingsgetränk: Spezi 🥤</p>
 
-            <div class="achievement-grid">
+</div>
 
-                <div class="achievement">
-                    <h3>🍬 Lachgummi-Legende</h3>
-                    <p>
-                        Kann Tüten schneller leeren als Creeper Häuser zerstören.
-                    </p>
-                </div>
+<div class="xp-bar">
+<div class="xp-fill"></div>
+</div>
 
-                <div class="achievement">
-                    <h3>🥤 Spezi-Meister</h3>
-                    <p>
-                        +100 Energie bei jedem Schluck.
-                    </p>
-                </div>
+<p>MAX LEVEL ERREICHT</p>
 
-                <div class="achievement">
-                    <h3>🥅 Endboss-Torwart</h3>
-                    <p>
-                        Manche behaupten, an ihm kommt kein Ball vorbei.
-                    </p>
-                </div>
+</section>
 
-                <div class="achievement">
-                    <h3>🎾 Padel-Champion</h3>
-                    <p>
-                        Reflexe auf Enderman-Niveau.
-                    </p>
-                </div>
+<section class="card">
 
-            </div>
+<h2>🏆 Achievements</h2>
 
-        </section>
+<div class="grid">
 
-        <section class="card">
-            <h2>📜 Hauptquest</h2>
+<div class="achievement">
+🍬 Lachgummi Legende
+</div>
 
-            <ul class="quest-list">
-                <li>✅ Kindheit abgeschlossen</li>
-                <li>✅ Schul-Quest überlebt</li>
-                <li>✅ Teenager-Level gemeistert</li>
-                <li>✅ Handball-Skillbaum entwickelt</li>
-                <li>✅ Padel-Fähigkeiten freigeschaltet</li>
-                <li>⭐ LEVEL 20 ERREICHT</li>
-            </ul>
-        </section>
+<div class="achievement">
+🥤 Spezi Meister
+</div>
 
-        <section class="card">
-            <h2>📦 Geheime Geburtstagskiste</h2>
+<div class="achievement">
+🥅 Handball Endboss
+</div>
 
-            <button onclick="openChest()" class="chest-button">
-                Truhe öffnen
-            </button>
+<div class="achievement">
+🎾 Padel Champion
+</div>
 
-            <div id="chest-content"></div>
-        </section>
+</div>
 
-        <section class="card boss">
+</section>
 
-            <h2>⚔ Bosskampf</h2>
+<section class="card">
 
-            <h3>Das Erwachsenenleben</h3>
+<h2>📜 Hauptquest</h2>
 
-            <div class="health-bar">
-                <div id="boss-health"></div>
-            </div>
+<ul>
+<li>✅ Kindheit abgeschlossen</li>
+<li>✅ Schulmission überlebt</li>
+<li>✅ Teenager-Modus beendet</li>
+<li>✅ Torwart-Skill maximiert</li>
+<li>✅ Padel-Baum freigeschaltet</li>
+<li>⭐ Level 20 erreicht</li>
+</ul>
 
-            <button onclick="attackBoss()">
-                Angriff!
-            </button>
+</section>
 
-            <p id="boss-message"></p>
+<section class="card">
 
-        </section>
+<h2>📦 Geburtstagskiste</h2>
 
-        <section class="card">
-            <h2>💚 Geburtstagsnachricht</h2>
+<button onclick="openChest()">
+Kiste öffnen
+</button>
 
-            <p class="message">
-                Lieber Nick,<br><br>
+<p id="chest-content"></p>
 
-                endlich hast du Level 20 erreicht.
-                Mögen deine Spezi-Vorräte niemals leer werden,
-                deine Lachgummis immer griffbereit sein
-                und jeder Ball den Weg an dir vorbei vergessen.<br><br>
+</section>
 
-                Hab einen legendären Geburtstag,
-                feier ordentlich und genieße deinen besonderen Tag! 🎉
-            </p>
-        </section>
+<section class="card boss">
 
-    </main>
+<h2>⚔ Bosskampf</h2>
 
-    <footer>
-        Made with ❤️ für Nicks Level-Up auf 20
-    </footer>
+<h3>Das Erwachsenenleben</h3>
 
-    <script src="script.js"></script>
+<div class="health-bar">
+<div id="boss-health"></div>
+</div>
+
+<button onclick="attackBoss()">
+Angreifen
+</button>
+
+<p id="boss-message"></p>
+
+</section>
+
+<section class="card">
+
+<h2>📊 Nick.EXE</h2>
+
+<div class="stats">
+
+<div>
+Spezi-Level:
+<span class="counter" data-target="999">0</span>
+</div>
+
+<div>
+Lachgummi-Skill:
+<span class="counter" data-target="100">0</span>
+</div>
+
+<div>
+Torwart-Reflexe:
+<span class="counter" data-target="98">0</span>
+</div>
+
+<div>
+Padel-Speed:
+<span class="counter" data-target="95">0</span>
+</div>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>💚 Geburtstagsnachricht</h2>
+
+<p class="message">
+
+Lieber Nick,
+
+<br><br>
+
+heute erreichst du offiziell Level 20.
+
+Mögen deine Spezi-Vorräte niemals leer werden,
+deine Lachgummis unendlich sein
+und die Gegner weiterhin an deinen Reflexen verzweifeln.
+
+<br><br>
+
+Happy Birthday du Legende! 🎉
+
+</p>
+
+</section>
+
+</main>
+
+<footer>
+Made with ❤️ für Nick
+</footer>
+
+<script src="script.js"></script>
 
 </body>
 </html>
