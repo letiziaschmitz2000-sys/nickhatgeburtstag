@@ -5,87 +5,171 @@ box-sizing:border-box;
 }
 
 body{
+
 font-family:'Press Start 2P',cursive;
-background:#1d1d1d;
+
+background:#1c1c1c;
+
 color:white;
+
 overflow-x:hidden;
 }
+
+/* HERO */
 
 .hero{
 
 height:100vh;
 
+position:relative;
+
+overflow:hidden;
+
 display:flex;
 justify-content:center;
 align-items:center;
 
-position:relative;
+text-align:center;
 
 background:
 linear-gradient(
-rgba(0,0,0,.25),
-rgba(0,0,0,.55)
-),
-url("assets/minecraft-sunset.jpg");
-
-background-size:cover;
-background-position:center;
+to bottom,
+#6ec6ff 0%,
+#87ceeb 40%,
+#ffb74d 80%,
+#ff8a65 100%
+);
 }
 
-.hero-overlay{
+/* Bewegende Wolken */
+
+.hero::before{
+
+content:"";
+
 position:absolute;
-inset:0;
-background:rgba(0,0,0,.15);
+
+top:0;
+left:-100%;
+
+width:300%;
+height:100%;
+
+background-image:
+
+radial-gradient(
+circle at 10% 12%,
+rgba(255,255,255,.9) 0,
+rgba(255,255,255,.9) 40px,
+transparent 50px
+),
+
+radial-gradient(
+circle at 30% 25%,
+rgba(255,255,255,.9) 0,
+rgba(255,255,255,.9) 50px,
+transparent 60px
+),
+
+radial-gradient(
+circle at 60% 18%,
+rgba(255,255,255,.9) 0,
+rgba(255,255,255,.9) 45px,
+transparent 55px
+),
+
+radial-gradient(
+circle at 80% 10%,
+rgba(255,255,255,.9) 0,
+rgba(255,255,255,.9) 60px,
+transparent 70px
+);
+
+animation:cloudMove 80s linear infinite;
+}
+
+/* Berge */
+
+.hero::after{
+
+content:"";
+
+position:absolute;
+
+bottom:80px;
+left:0;
+
+width:100%;
+height:260px;
+
+background:#2e7d32;
+
+clip-path:polygon(
+0% 100%,
+8% 40%,
+15% 65%,
+30% 20%,
+45% 80%,
+60% 15%,
+75% 70%,
+90% 25%,
+100% 100%
+);
+
+opacity:.95;
+}
+
+@keyframes cloudMove{
+
+from{
+transform:translateX(0);
+}
+
+to{
+transform:translateX(-35%);
+}
+
 }
 
 .hero-content{
+
 position:relative;
-z-index:2;
-text-align:center;
-padding:20px;
-}
 
-.hero h1{
+z-index:10;
 
-font-size:5rem;
+padding:25px;
 
-text-shadow:
-5px 5px #000,
-10px 10px rgba(0,0,0,.4);
-
-margin-bottom:20px;
-}
-
-.hero h2{
-color:#FFD700;
-margin-bottom:25px;
-}
-
-.hero-text{
-
-background:rgba(0,0,0,.55);
-
-padding:20px;
-
-line-height:2;
-
-border-radius:10px;
+max-width:900px;
 }
 
 .server-message{
 
 display:inline-block;
 
-margin-bottom:30px;
+padding:12px 20px;
 
-padding:15px;
+background:#000;
 
-background:black;
+border:4px solid #FFD700;
 
-border:3px solid gold;
+color:#FFD700;
 
-color:gold;
+margin-bottom:35px;
+
+box-shadow:0 0 15px rgba(255,215,0,.5);
+
+animation:blink 2s infinite;
 }
+
+@keyframes blink{
+
+50%{
+opacity:.7;
+}
+
+}
+
+/* Minecraft Sonne */
 
 .sun{
 
@@ -97,70 +181,130 @@ right:10%;
 width:120px;
 height:120px;
 
-background:#ffb300;
+background:#FFD54F;
 
 box-shadow:
 0 0 40px orange,
 0 0 80px orange;
 
-animation:glow 4s infinite alternate;
+z-index:2;
+
+animation:sunFloat 5s infinite ease-in-out;
 }
 
-@keyframes glow{
+@keyframes sunFloat{
 
-from{
-transform:scale(1);
+0%{
+transform:translateY(0);
 }
 
-to{
-transform:scale(1.15);
+50%{
+transform:translateY(-12px);
 }
+
+100%{
+transform:translateY(0);
+}
+
+}
+
+.hero h1{
+
+font-size:5rem;
+
+margin-bottom:20px;
+
+color:white;
+
+text-shadow:
+4px 4px #000,
+8px 8px #111,
+12px 12px rgba(0,0,0,.4);
+}
+
+.hero h2{
+
+color:#FFD700;
+
+margin-bottom:25px;
+
+text-shadow:3px 3px black;
+}
+
+.hero-text{
+
+background:
+rgba(0,0,0,.45);
+
+padding:25px;
+
+line-height:2;
+
+border:3px solid #444;
+
+box-shadow:
+0 0 30px rgba(0,0,0,.3);
 }
 
 .grass-strip{
 
 position:absolute;
 
+left:0;
 bottom:0;
 
 width:100%;
 height:80px;
 
 background:
-linear-gradient(
-to bottom,
-#4caf50 0%,
-#4caf50 25%,
-#795548 25%,
-#795548 100%
+
+repeating-linear-gradient(
+90deg,
+#5bac38 0px,
+#5bac38 20px,
+#4f9830 20px,
+#4f9830 40px
 );
+
+border-top:8px solid #7ed957;
+
+z-index:2;
 }
+
+/* BUTTONS */
 
 button{
 
-padding:15px 25px;
+padding:16px 25px;
 
 margin-top:25px;
 
 font-family:inherit;
 
-border:none;
+background:#7c7c7c;
+
+border:4px solid #3d3d3d;
+
+color:white;
 
 cursor:pointer;
 
-background:#6a1b9a;
-color:white;
-
-transition:.3s;
+transition:.25s;
 }
 
 button:hover{
-transform:scale(1.05);
+
+transform:translateY(-2px);
+
+background:#949494;
 }
+
+/* MAIN */
 
 main{
 
 max-width:1200px;
+
 margin:auto;
 
 padding:20px;
@@ -168,40 +312,55 @@ padding:20px;
 
 .card{
 
-background:#303030;
+background:#3c3c3c;
 
-border:4px solid #5c5c5c;
+border:4px solid #6a6a6a;
 
 margin:30px 0;
 
 padding:25px;
+
+box-shadow:
+0 0 25px rgba(0,0,0,.4);
 }
 
 .card h2{
+
 margin-bottom:20px;
-color:#7CFC00;
+
+color:#84ff5d;
 }
 
 .xp-bar{
 
 height:30px;
-background:black;
+
+background:#111;
 
 margin-top:20px;
+
+border:2px solid #666;
 }
 
 .xp-fill{
 
 height:100%;
+
 width:100%;
 
 background:
-linear-gradient(90deg,lime,#2ecc71);
+linear-gradient(
+90deg,
+#00ff2a,
+#0cab1f
+);
 }
+
+/* Truhe */
 
 .chest{
 
-font-size:6rem;
+font-size:7rem;
 
 cursor:pointer;
 
@@ -210,26 +369,33 @@ transition:.3s;
 
 .chest:hover{
 
-transform:scale(1.1)
+transform:
+scale(1.15)
 rotate(5deg);
 }
 
 .chest-wrapper{
+
 text-align:center;
 }
 
 #loot-result{
 
-margin-top:20px;
+margin-top:25px;
+
+font-size:1rem;
+
+color:#4fc3f7;
 
 min-height:60px;
-
-color:#00e5ff;
 }
+
+/* Achievements */
 
 .grid{
 
 display:grid;
+
 grid-template-columns:
 repeat(auto-fit,minmax(250px,1fr));
 
@@ -238,27 +404,39 @@ gap:20px;
 
 .achievement{
 
-background:#444;
+background:#555;
+
 padding:20px;
+
 text-align:center;
+
+border:3px solid #777;
 }
+
+/* Boss */
 
 .health-bar{
 
 height:40px;
+
 background:black;
+
 margin:20px 0;
+
+border:2px solid #444;
 }
 
 #boss-health{
 
-background:red;
-
 height:100%;
 width:100%;
 
-transition:.5s;
+background:red;
+
+transition:.4s;
 }
+
+/* Stats */
 
 .stat{
 margin:15px 0;
@@ -268,12 +446,23 @@ margin:15px 0;
 line-height:2;
 }
 
+footer{
+
+background:#111;
+
+padding:25px;
+
+text-align:center;
+}
+
+/* Achievement Popup */
+
 #achievement-popup{
 
 position:fixed;
 
-right:-500px;
 top:20px;
+right:-500px;
 
 background:#222;
 
@@ -284,6 +473,9 @@ border:3px solid gold;
 z-index:9999;
 
 transition:.8s;
+
+box-shadow:
+0 0 20px gold;
 }
 
 #achievement-popup.show{
@@ -291,52 +483,76 @@ transition:.8s;
 right:20px;
 }
 
+/* Diamanten Anzeige */
+
 #score{
 
 position:fixed;
 
-top:15px;
 left:15px;
-
-padding:12px;
+top:15px;
 
 background:black;
 
-border:2px solid cyan;
+padding:12px;
+
+border:2px solid #00e5ff;
 
 z-index:999;
 }
 
 #secret{
+
 font-size:2rem;
+
 margin-top:25px;
+
 cursor:pointer;
 }
 
-footer{
-
-background:#111;
-
-padding:20px;
-
-text-align:center;
-}
+/* Handy */
 
 @media(max-width:768px){
 
 .hero h1{
-font-size:2.2rem;
+
+font-size:2rem;
 }
 
 .hero h2{
+
 font-size:1rem;
 }
 
 .hero-text{
-font-size:0.6rem;
+
+font-size:.65rem;
+line-height:1.8;
+}
+
+.server-message{
+
+font-size:.65rem;
+}
+
+.sun{
+
+width:70px;
+height:70px;
 }
 
 body{
+
 font-size:11px;
+}
+
+button{
+
+width:100%;
+}
+
+.card{
+
+padding:18px;
 }
 }
