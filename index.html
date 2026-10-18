@@ -6,44 +6,53 @@
 
 <title>Nick's World | Level 20</title>
 
-<link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div id="achievement-popup" class="achievement-popup">
-    🏆 Achievement freigeschaltet:
-    <br>
-    LEVEL 20 ERREICHT!
+<div id="achievement-popup">
+    🏆 Achievement Get!<br>
+    Nick hat Level 20 erreicht!
 </div>
 
 <div id="score">
-    🍬 Lachgummis: 0
+    💎 Diamanten: <span id="diamond-count">0</span>
 </div>
 
 <header class="hero">
 
-    <div class="overlay"></div>
+<div class="hero-overlay"></div>
+<div class="sun"></div>
 
-    <div class="hero-content">
+<div class="hero-content">
 
-        <h1>NICK'S WORLD</h1>
+<div class="server-message">
+SERVER-MELDUNG
+</div>
 
-        <h2>LEVEL 20 UNLOCKED</h2>
+<h1>NICK'S WORLD</h1>
 
-        <p>
-            Willkommen auf dem Server von Nick.
-            Ein neues Level wurde erreicht.
-        </p>
+<h2>LEVEL 20 UNLOCKED</h2>
 
-        <div id="secret">⛏️</div>
+<p class="hero-text">
+Spieler Nick hat Level 20 erreicht.<br>
++20 Jahre Erfahrung<br>
++999 Spezi<br>
++100 Lachgummis<br>
++Legendären Status
+</p>
 
-        <button onclick="scrollToGame()">
-            ▶ Welt betreten
-        </button>
+<div id="secret">⛏️</div>
 
-    </div>
+<button onclick="scrollToGame()">
+WELT BETRETEN
+</button>
+
+</div>
+
+<div class="grass-strip"></div>
 
 </header>
 
@@ -53,21 +62,34 @@
 
 <h2>👤 Spielerprofil</h2>
 
-<div class="profile">
-
 <p>Name: Nick</p>
 <p>Klasse: Legendärer Torwart</p>
 <p>Level: 20</p>
-<p>Lieblingssüßigkeit: Lachgummis 🍬</p>
 <p>Lieblingsgetränk: Spezi 🥤</p>
-
-</div>
+<p>Lieblingssnack: Lachgummis 🍬</p>
+<p>Padel-Level: 95</p>
 
 <div class="xp-bar">
 <div class="xp-fill"></div>
 </div>
 
-<p>MAX LEVEL ERREICHT</p>
+</section>
+
+<section class="card">
+
+<h2>💎 Minecraft-Lootkiste</h2>
+
+<div class="chest-wrapper">
+
+<div class="chest" onclick="openLootChest()">
+📦
+</div>
+
+<p>Klicke auf die Kiste!</p>
+
+</div>
+
+<div id="loot-result"></div>
 
 </section>
 
@@ -78,19 +100,19 @@
 <div class="grid">
 
 <div class="achievement">
-🍬 Lachgummi Legende
+🍬 Lachgummi-Legende
 </div>
 
 <div class="achievement">
-🥤 Spezi Meister
+🥤 Spezi-Meister
 </div>
 
 <div class="achievement">
-🥅 Handball Endboss
+🥅 Endboss-Torwart
 </div>
 
 <div class="achievement">
-🎾 Padel Champion
+🎾 Padel-Champion
 </div>
 
 </div>
@@ -98,44 +120,17 @@
 </section>
 
 <section class="card">
-
-<h2>📜 Hauptquest</h2>
-
-<ul>
-<li>✅ Kindheit abgeschlossen</li>
-<li>✅ Schulmission überlebt</li>
-<li>✅ Teenager-Modus beendet</li>
-<li>✅ Torwart-Skill maximiert</li>
-<li>✅ Padel-Baum freigeschaltet</li>
-<li>⭐ Level 20 erreicht</li>
-</ul>
-
-</section>
-
-<section class="card">
-
-<h2>📦 Geburtstagskiste</h2>
-
-<button onclick="openChest()">
-Kiste öffnen
-</button>
-
-<p id="chest-content"></p>
-
-</section>
-
-<section class="card boss">
 
 <h2>⚔ Bosskampf</h2>
 
-<h3>Das Erwachsenenleben</h3>
+<p>Das Erwachsenenleben</p>
 
 <div class="health-bar">
 <div id="boss-health"></div>
 </div>
 
 <button onclick="attackBoss()">
-Angreifen
+ANGREIFEN
 </button>
 
 <p id="boss-message"></p>
@@ -146,28 +141,24 @@ Angreifen
 
 <h2>📊 Nick.EXE</h2>
 
-<div class="stats">
-
-<div>
+<div class="stat">
 Spezi-Level:
 <span class="counter" data-target="999">0</span>
 </div>
 
-<div>
+<div class="stat">
 Lachgummi-Skill:
 <span class="counter" data-target="100">0</span>
 </div>
 
-<div>
+<div class="stat">
 Torwart-Reflexe:
 <span class="counter" data-target="98">0</span>
 </div>
 
-<div>
+<div class="stat">
 Padel-Speed:
 <span class="counter" data-target="95">0</span>
-</div>
-
 </div>
 
 </section>
@@ -185,12 +176,13 @@ Lieber Nick,
 heute erreichst du offiziell Level 20.
 
 Mögen deine Spezi-Vorräte niemals leer werden,
-deine Lachgummis unendlich sein
-und die Gegner weiterhin an deinen Reflexen verzweifeln.
+deine Lachgummis immer griffbereit sein,
+du im Paddel unbesiegbar bleiben
+und keine Handballmannschaft an deinen Reflexen vorbeikommen.
 
 <br><br>
 
-Happy Birthday du Legende! 🎉
+Happy Birthday 🎉
 
 </p>
 
@@ -199,7 +191,7 @@ Happy Birthday du Legende! 🎉
 </main>
 
 <footer>
-Made with ❤️ für Nick
+Made with fun für Nick's Birthday Edition
 </footer>
 
 <script src="script.js"></script>
