@@ -1,0 +1,199 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#1c1c1c;
+    color:white;
+    font-family:'Press Start 2P', cursive;
+    line-height:1.8;
+    overflow-x:hidden;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+
+    background:
+    linear-gradient(
+        to bottom,
+        #6fcf97,
+        #4caf50
+    );
+}
+
+.hero h1{
+    font-size:4rem;
+    color:white;
+    text-shadow:4px 4px #000;
+    margin-bottom:20px;
+}
+
+.hero h2{
+    color:#ffe600;
+    text-shadow:3px 3px black;
+    margin-bottom:30px;
+}
+
+.subtitle{
+    margin-bottom:30px;
+}
+
+button{
+    cursor:pointer;
+    padding:15px 25px;
+    border:none;
+
+    background:#7c4dff;
+    color:white;
+
+    font-family:inherit;
+
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+    background:#9d7aff;
+}
+
+main{
+    max-width:1200px;
+    margin:auto;
+    padding:30px;
+}
+
+.card{
+    background:#2d2d2d;
+    border:4px solid #5f5f5f;
+
+    margin:30px 0;
+    padding:30px;
+    border-radius:10px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.4);
+}
+
+.card h2{
+    margin-bottom:25px;
+    color:#7CFC00;
+}
+
+.profile p{
+    margin:15px 0;
+}
+
+.xp-bar{
+    height:30px;
+    background:#111;
+    margin-top:20px;
+    border:2px solid #555;
+}
+
+.xp-fill{
+    width:100%;
+    height:100%;
+    background:linear-gradient(90deg,#00ff55,#00b33c);
+}
+
+.center{
+    text-align:center;
+    margin-top:10px;
+}
+
+.achievement-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.achievement{
+    background:#3e3e3e;
+    padding:20px;
+}
+
+.quest-list{
+    list-style:none;
+}
+
+.quest-list li{
+    margin:15px 0;
+}
+
+.chest-button{
+    margin-bottom:20px;
+}
+
+#chest-content{
+    color:#ffe600;
+}
+
+.health-bar{
+    height:40px;
+    background:#111;
+    margin:25px 0;
+}
+
+#boss-health{
+    height:100%;
+    background:red;
+    width:100%;
+    transition:.4s;
+}
+
+.message{
+    line-height:2;
+}
+
+footer{
+    text-align:center;
+    padding:25px;
+    background:#111;
+}
+
+.particles{
+    position:fixed;
+    inset:0;
+
+    background-image:
+    radial-gradient(white 1px, transparent 1px);
+
+    background-size:50px 50px;
+
+    opacity:0.15;
+
+    pointer-events:none;
+}
+
+@media(max-width:900px){
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .hero h2{
+        font-size:1rem;
+    }
+
+    .achievement-grid{
+        grid-template-columns:1fr;
+    }
+
+    body{
+        font-size:12px;
+    }
+
+    button{
+        width:100%;
+    }
+
+    .card{
+        padding:20px;
+    }
+}
