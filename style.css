@@ -5,75 +5,146 @@ box-sizing:border-box;
 }
 
 body{
-
 font-family:'Press Start 2P',cursive;
+background:#1d1d1d;
 color:white;
-
-animation:daynight 30s linear infinite;
-
 overflow-x:hidden;
-}
-
-@keyframes daynight{
-
-0%{background:#87ceeb;}
-25%{background:#58a6ff;}
-50%{background:#142850;}
-75%{background:#0a192f;}
-100%{background:#87ceeb;}
-
 }
 
 .hero{
 
-position:relative;
-
-min-height:100vh;
+height:100vh;
 
 display:flex;
 justify-content:center;
 align-items:center;
 
-text-align:center;
+position:relative;
 
 background:
 linear-gradient(
-180deg,
-rgba(76,175,80,.95),
-rgba(46,125,50,.95)
-);
+rgba(0,0,0,.25),
+rgba(0,0,0,.55)
+),
+url("assets/minecraft-sunset.jpg");
 
-padding:30px;
+background-size:cover;
+background-position:center;
+}
+
+.hero-overlay{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.15);
 }
 
 .hero-content{
+position:relative;
 z-index:2;
+text-align:center;
+padding:20px;
 }
 
 .hero h1{
 
-font-size:4rem;
-margin-bottom:20px;
+font-size:5rem;
 
 text-shadow:
-5px 5px black;
+5px 5px #000,
+10px 10px rgba(0,0,0,.4);
+
+margin-bottom:20px;
 }
 
 .hero h2{
+color:#FFD700;
+margin-bottom:25px;
+}
+
+.hero-text{
+
+background:rgba(0,0,0,.55);
+
+padding:20px;
+
+line-height:2;
+
+border-radius:10px;
+}
+
+.server-message{
+
+display:inline-block;
 
 margin-bottom:30px;
-color:#ffeb3b;
+
+padding:15px;
+
+background:black;
+
+border:3px solid gold;
+
+color:gold;
+}
+
+.sun{
+
+position:absolute;
+
+top:80px;
+right:10%;
+
+width:120px;
+height:120px;
+
+background:#ffb300;
+
+box-shadow:
+0 0 40px orange,
+0 0 80px orange;
+
+animation:glow 4s infinite alternate;
+}
+
+@keyframes glow{
+
+from{
+transform:scale(1);
+}
+
+to{
+transform:scale(1.15);
+}
+}
+
+.grass-strip{
+
+position:absolute;
+
+bottom:0;
+
+width:100%;
+height:80px;
+
+background:
+linear-gradient(
+to bottom,
+#4caf50 0%,
+#4caf50 25%,
+#795548 25%,
+#795548 100%
+);
 }
 
 button{
 
 padding:15px 25px;
 
-margin-top:20px;
-
-border:none;
+margin-top:25px;
 
 font-family:inherit;
+
+border:none;
 
 cursor:pointer;
 
@@ -84,9 +155,7 @@ transition:.3s;
 }
 
 button:hover{
-
 transform:scale(1.05);
-background:#9c27b0;
 }
 
 main{
@@ -99,47 +168,26 @@ padding:20px;
 
 .card{
 
-background:#2c2c2c;
+background:#303030;
+
+border:4px solid #5c5c5c;
 
 margin:30px 0;
 
 padding:25px;
-
-border:4px solid #555;
-
-border-radius:10px;
 }
 
 .card h2{
-
 margin-bottom:20px;
-
-color:#8bc34a;
-}
-
-.grid{
-
-display:grid;
-
-grid-template-columns:
-repeat(2,1fr);
-
-gap:20px;
-}
-
-.achievement{
-
-background:#444;
-padding:20px;
+color:#7CFC00;
 }
 
 .xp-bar{
 
+height:30px;
 background:black;
 
-height:30px;
-
-margin:25px 0;
+margin-top:20px;
 }
 
 .xp-fill{
@@ -148,45 +196,79 @@ height:100%;
 width:100%;
 
 background:
-linear-gradient(
-90deg,
-lime,
-green
-);
+linear-gradient(90deg,lime,#2ecc71);
+}
+
+.chest{
+
+font-size:6rem;
+
+cursor:pointer;
+
+transition:.3s;
+}
+
+.chest:hover{
+
+transform:scale(1.1)
+rotate(5deg);
+}
+
+.chest-wrapper{
+text-align:center;
+}
+
+#loot-result{
+
+margin-top:20px;
+
+min-height:60px;
+
+color:#00e5ff;
+}
+
+.grid{
+
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(250px,1fr));
+
+gap:20px;
+}
+
+.achievement{
+
+background:#444;
+padding:20px;
+text-align:center;
 }
 
 .health-bar{
 
-height:50px;
+height:40px;
 background:black;
 margin:20px 0;
 }
 
 #boss-health{
 
+background:red;
+
 height:100%;
 width:100%;
-
-background:red;
 
 transition:.5s;
 }
 
-.message{
+.stat{
+margin:15px 0;
+}
 
+.message{
 line-height:2;
 }
 
-footer{
-
-padding:25px;
-
-text-align:center;
-
-background:#111;
-}
-
-.achievement-popup{
+#achievement-popup{
 
 position:fixed;
 
@@ -195,16 +277,16 @@ top:20px;
 
 background:#222;
 
-border:3px solid gold;
-
 padding:20px;
+
+border:3px solid gold;
 
 z-index:9999;
 
 transition:.8s;
 }
 
-.achievement-popup.show{
+#achievement-popup.show{
 
 right:20px;
 }
@@ -213,69 +295,48 @@ right:20px;
 
 position:fixed;
 
-left:15px;
 top:15px;
+left:15px;
 
-z-index:999;
+padding:12px;
 
 background:black;
 
-padding:10px;
+border:2px solid cyan;
 
-border:2px solid lime;
-}
-
-.gummy{
-
-position:fixed;
-
-font-size:2rem;
-
-cursor:pointer;
-
-animation:fall 8s linear forwards;
-}
-
-@keyframes fall{
-
-from{
-transform:translateY(-100px);
-}
-
-to{
-transform:translateY(120vh);
-}
+z-index:999;
 }
 
 #secret{
 font-size:2rem;
-margin-top:20px;
+margin-top:25px;
 cursor:pointer;
 }
 
-.stats div{
-margin:20px 0;
+footer{
+
+background:#111;
+
+padding:20px;
+
+text-align:center;
 }
 
 @media(max-width:768px){
 
 .hero h1{
-font-size:2rem;
+font-size:2.2rem;
 }
 
 .hero h2{
-font-size:.9rem;
+font-size:1rem;
 }
 
-.grid{
-grid-template-columns:1fr;
+.hero-text{
+font-size:0.6rem;
 }
 
 body{
-font-size:10px;
-}
-
-button{
-width:100%;
+font-size:11px;
 }
 }
