@@ -8,72 +8,116 @@ behavior:"smooth"
 
 }
 
-window.onload=()=>{
+window.onload = () => {
 
-const popup=
+const popup =
 document.getElementById(
 "achievement-popup"
 );
 
 popup.classList.add("show");
 
-setTimeout(()=>{
-
+setTimeout(() => {
 popup.classList.remove("show");
-
 },5000);
 
 animateCounters();
+
 };
 
-function openChest(){
+let diamonds = 0;
 
-const facts=[
+function openLootChest(){
 
-"🍬 Nick kann Lachgummis schneller farmen als Diamanten.",
+const roll = Math.random()*100;
 
-"🥤 Spezi gibt +100 Energie.",
+let loot = "";
 
-"🥅 Gegnerische Handballer fürchten diesen Torwart.",
+if(roll < 45){
 
-"🎾 Padel-Skill freigeschaltet.",
-
-"👑 Legendärer Level-20-Spieler."
-];
-
-const random=
-facts[Math.floor(
-Math.random()*facts.length
-)];
-
-document.getElementById(
-"chest-content"
-).innerHTML=random;
+loot = "🪨 Du hast Eisen gefunden.";
 
 }
 
-let health=100;
+else if(roll < 70){
+
+loot = "🍞 Du hast Brot gefunden.";
+
+}
+
+else if(roll < 85){
+
+loot = "🥤 Du hast Spezi gefunden.";
+
+}
+
+else if(roll < 95){
+
+loot = "🍬 Du hast Lachgummis gefunden.";
+
+}
+
+else if(roll < 99){
+
+diamonds++;
+
+document.getElementById(
+"diamond-count"
+).innerText = diamonds;
+
+loot =
+"💎 SELTENER DROP! Du hast einen Diamanten gefunden!";
+
+}
+
+else{
+
+loot =
+"⭐ LEGENDARY DROP! Netherite erhalten!";
+}
+
+document.getElementById(
+"loot-result"
+).innerHTML = loot;
+}
+
+let health = 100;
 
 function attackBoss(){
 
-if(health<=0)return;
+if(health <= 0) return;
 
-health-=20;
+health -= 20;
 
-if(health<0)health=0;
+if(health < 0)
+health = 0;
 
 document.getElementById(
 "boss-health"
-).style.width=
-health+"%";
+).style.width =
+health + "%";
 
-if(health===0){
+if(health === 0){
 
 document.getElementById(
 "boss-message"
-).innerHTML=
+).innerHTML =
 
-"🎉 BOSS BESIEGT!<br><br>+500 Spezi<br>+1000 Lachgummis<br>+Level-Up erfolgreich";
+`
+🎉 MISSION ERFOLGREICH!
+
+<br><br>
+
+Spieler Nick hat das Erwachsenenleben besiegt.
+
+<br><br>
+
+💎 Diamantrüstung erhalten
+<br>
+🥤 Unendlich Spezi
+<br>
+🍬 Unendlich Lachgummis
+`;
 
 launchConfetti();
 }
@@ -81,130 +125,51 @@ launchConfetti();
 
 function launchConfetti(){
 
-for(let i=0;i<150;i++){
+for(let i=0;i<120;i++){
 
-const c=
+const confetti =
 document.createElement("div");
 
-c.style.position="fixed";
-
-c.style.left=
-Math.random()*100+"vw";
-
-c.style.top="-20px";
-
-c.style.width="10px";
-c.style.height="10px";
-
-c.style.background=
+confetti.style.position="fixed";
+confetti.style.left=Math.random()*100+"vw";
+confetti.style.top="-10px";
+confetti.style.width="10px";
+confetti.style.height="10px";
+confetti.style.background=
 `hsl(${Math.random()*360},100%,50%)`;
 
-c.style.zIndex="9999";
+confetti.style.transition="4s";
 
-c.style.transition="4s";
-
-document.body.appendChild(c);
+document.body.appendChild(confetti);
 
 setTimeout(()=>{
 
-c.style.transform=
+confetti.style.transform=
 `translateY(110vh) rotate(720deg)`;
 
-},50);
+},20);
 
 setTimeout(()=>{
-
-c.remove();
-
+confetti.remove();
 },4000);
+
 }
 }
 
-let gummies=0;
-
-setInterval(()=>{
-
-const gummy=
-document.createElement("div");
-
-gummy.className="gummy";
-
-gummy.innerHTML="🍬";
-
-gummy.style.left=
-Math.random()*100+"vw";
-
-gummy.onclick=()=>{
-
-gummies++;
-
-document.getElementById(
-"score"
-).innerHTML=
-`🍬 Lachgummis: ${gummies}`;
-
-gummy.remove();
-};
-
-document.body.appendChild(gummy);
-
-setTimeout(()=>{
-
-gummy.remove();
-
-},8000);
-
-},2500);
-
-setInterval(()=>{
-
-const spezi=
-document.createElement("div");
-
-spezi.innerHTML="🥤";
-
-spezi.style.position="fixed";
-
-spezi.style.left="-50px";
-
-spezi.style.top=
-Math.random()*80+"vh";
-
-spezi.style.fontSize="2rem";
-
-spezi.style.transition=
-"8s linear";
-
-document.body.appendChild(spezi);
-
-setTimeout(()=>{
-
-spezi.style.left="110vw";
-
-},50);
-
-setTimeout(()=>{
-
-spezi.remove();
-
-},8000);
-
-},7000);
-
-let clicks=0;
+let clicks = 0;
 
 document.addEventListener(
 "click",
-(e)=>{
+(event)=>{
 
-if(e.target.id==="secret"){
+if(event.target.id==="secret"){
 
 clicks++;
 
 if(clicks===5){
 
 alert(
-"🥤 GEHEIMES ACHIEVEMENT!\n\nSPEZI OVERLOAD FREIGESCHALTET!"
+"🏆 Geheimes Achievement!\n\nSpezi Overload freigeschaltet!"
 );
 
 }
@@ -214,36 +179,35 @@ alert(
 
 function animateCounters(){
 
-const counters=
+const counters =
 document.querySelectorAll(".counter");
 
 counters.forEach(counter=>{
 
-const target=
+const target =
 Number(counter.dataset.target);
 
-let current=0;
+let current = 0;
 
-const update=()=>{
+const update = ()=>{
 
-const increment=
-Math.ceil(target/50);
+current += Math.ceil(target/50);
 
-current+=increment;
+if(current > target)
+current = target;
 
-if(current>target)
-current=target;
+counter.innerText = current;
 
-counter.innerText=current;
-
-if(current<target){
+if(current < target){
 
 requestAnimationFrame(update);
 
 }
+
 };
 
 update();
 
 });
+
 }
